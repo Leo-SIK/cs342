@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8d596c5c06e945e79618516def33285a" Name="Diagram1">
+        <EntityTypeShape EntityType="MRPModel.Address" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MRPModel.BillOfMaterial" Width="1.5" PointX="7.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MRPModel.Credit" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MRPModel.Customer" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MRPModel.CustomerOrder" Width="1.5" PointX="10.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="MRPModel.Inventory" Width="1.5" PointX="7.5" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MRPModel.JobOrder" Width="1.5" PointX="7.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MRPModel.Part" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MRPModel.Resource" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MRPModel.VendorOrder" Width="1.5" PointX="10.5" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MRPModel.Vendor" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <AssociationConnector Association="MRPModel.FK__Customer__Billin__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="MRPModel.FK__Customer__Shippi__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="MRPModel.FK__Vendors__VendorA__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="MRPModel.FK__BillOfMat__Compo__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="MRPModel.FK__BillOfMat__Produ__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="MRPModel.FK__Customer__Credit__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="MRPModel.FK__CustomerO__Custo__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="MRPModel.FK__CustomerO__Produ__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="MRPModel.FK__Inventory__Produ__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="MRPModel.FK__JobOrders__Produ__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="MRPModel.FK__Parts__VendorID__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="MRPModel.FK__VendorOrd__Produ__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="MRPModel.FK__VendorOrd__Vendo__3B75D760" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

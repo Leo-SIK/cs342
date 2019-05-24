@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MRPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddressID" />
+    </Key>
+    <Property Name="AddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StreetAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__Billin__32E0915F" FromRole="Address" ToRole="Customer" />
+    <NavigationProperty Name="Customers1" Relationship="Self.FK__Customer__Shippi__33D4B598" FromRole="Address" ToRole="Customer" />
+    <NavigationProperty Name="Vendors" Relationship="Self.FK__Vendors__VendorA__25869641" FromRole="Address" ToRole="Vendors" />
+  </EntityType>
+  <EntityType Name="BillOfMaterial">
+    <Key>
+      <PropertyRef Name="BillOfMaterialsID" />
+    </Key>
+    <Property Name="BillOfMaterialsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductAssemblyID" Type="Int32" />
+    <Property Name="ComponentID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Part" Relationship="Self.FK__BillOfMat__Compo__2E1BDC42" FromRole="BillOfMaterials" ToRole="Parts" />
+    <NavigationProperty Name="Part1" Relationship="Self.FK__BillOfMat__Produ__2D27B809" FromRole="BillOfMaterials" ToRole="Parts" />
+  </EntityType>
+  <EntityType Name="Credit">
+    <Key>
+      <PropertyRef Name="CreditID" />
+    </Key>
+    <Property Name="CreditID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccountNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CurrentBalance" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__Credit__34C8D9D1" FromRole="Credit" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BillingAddressID" Type="Int32" Nullable="false" />
+    <Property Name="ShippingAddressID" Type="Int32" Nullable="false" />
+    <Property Name="CreditID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Address" Relationship="Self.FK__Customer__Billin__32E0915F" FromRole="Customer" ToRole="Address" />
+    <NavigationProperty Name="Address1" Relationship="Self.FK__Customer__Shippi__33D4B598" FromRole="Customer" ToRole="Address" />
+    <NavigationProperty Name="Credit" Relationship="Self.FK__Customer__Credit__34C8D9D1" FromRole="Customer" ToRole="Credit" />
+    <NavigationProperty Name="CustomerOrders" Relationship="Self.FK__CustomerO__Custo__37A5467C" FromRole="Customer" ToRole="CustomerOrders" />
+  </EntityType>
+  <EntityType Name="CustomerOrder">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="DateAvailable" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SplitShipments" Type="Boolean" Nullable="false" />
+    <Property Name="Shipped" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__CustomerO__Custo__37A5467C" FromRole="CustomerOrders" ToRole="Customer" />
+    <NavigationProperty Name="Part" Relationship="Self.FK__CustomerO__Produ__38996AB5" FromRole="CustomerOrders" ToRole="Parts" />
+  </EntityType>
+  <EntityType Name="Inventory">
+    <Key>
+      <PropertyRef Name="InventoryID" />
+    </Key>
+    <Property Name="InventoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="InventoryLane" Type="Int32" Nullable="false" />
+    <Property Name="InventoryRow" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="InventoryBin" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Part" Relationship="Self.FK__Inventory__Produ__4222D4EF" FromRole="Inventory" ToRole="Parts" />
+  </EntityType>
+  <EntityType Name="JobOrder">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="SerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Completed" Type="Boolean" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Part" Relationship="Self.FK__JobOrders__Produ__3F466844" FromRole="JobOrders" ToRole="Parts" />
+  </EntityType>
+  <EntityType Name="Part">
+    <Key>
+      <PropertyRef Name="PartID" />
+    </Key>
+    <Property Name="PartID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PartName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PartDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PartType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PartCost" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="VendorID" Type="Int32" />
+    <Property Name="EconomicOrderQty" Type="Int32" />
+    <Property Name="SafetyStock" Type="Int32" />
+    <Property Name="OnHandMax" Type="Int32" />
+    <Property Name="OrderLeadTime" Type="Int32" />
+    <Property Name="PartIllustration" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="BillOfMaterials" Relationship="Self.FK__BillOfMat__Compo__2E1BDC42" FromRole="Parts" ToRole="BillOfMaterials" />
+    <NavigationProperty Name="BillOfMaterials1" Relationship="Self.FK__BillOfMat__Produ__2D27B809" FromRole="Parts" ToRole="BillOfMaterials" />
+    <NavigationProperty Name="CustomerOrders" Relationship="Self.FK__CustomerO__Produ__38996AB5" FromRole="Parts" ToRole="CustomerOrders" />
+    <NavigationProperty Name="Inventories" Relationship="Self.FK__Inventory__Produ__4222D4EF" FromRole="Parts" ToRole="Inventory" />
+    <NavigationProperty Name="JobOrders" Relationship="Self.FK__JobOrders__Produ__3F466844" FromRole="Parts" ToRole="JobOrders" />
+    <NavigationProperty Name="Vendor" Relationship="Self.FK__Parts__VendorID__286302EC" FromRole="Parts" ToRole="Vendors" />
+    <NavigationProperty Name="VendorOrders" Relationship="Self.FK__VendorOrd__Produ__3C69FB99" FromRole="Parts" ToRole="VendorOrders" />
+  </EntityType>
+  <EntityType Name="Resource">
+    <Key>
+      <PropertyRef Name="ResourceID" />
+    </Key>
+    <Property Name="ResourceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ResourceName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ResourceStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MaintainanceDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ReplacementDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="VendorOrder">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VendorID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="QuantityOrdered" Type="Int32" Nullable="false" />
+    <Property Name="QuantityReceived" Type="Int32" Nullable="false" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="OrderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Part" Relationship="Self.FK__VendorOrd__Produ__3C69FB99" FromRole="VendorOrders" ToRole="Parts" />
+    <NavigationProperty Name="Vendor" Relationship="Self.FK__VendorOrd__Vendo__3B75D760" FromRole="VendorOrders" ToRole="Vendors" />
+  </EntityType>
+  <EntityType Name="Vendor">
+    <Key>
+      <PropertyRef Name="VendorID" />
+    </Key>
+    <Property Name="VendorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VendorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="VendorAddressID" Type="Int32" Nullable="false" />
+    <Property Name="VendorRating" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Address" Relationship="Self.FK__Vendors__VendorA__25869641" FromRole="Vendors" ToRole="Address" />
+    <NavigationProperty Name="Parts" Relationship="Self.FK__Parts__VendorID__286302EC" FromRole="Vendors" ToRole="Parts" />
+    <NavigationProperty Name="VendorOrders" Relationship="Self.FK__VendorOrd__Vendo__3B75D760" FromRole="Vendors" ToRole="VendorOrders" />
+  </EntityType>
+  <Association Name="FK__Customer__Billin__32E0915F">
+    <End Role="Address" Type="Self.Address" Multiplicity="1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="BillingAddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Customer__Shippi__33D4B598">
+    <End Role="Address" Type="Self.Address" Multiplicity="1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="ShippingAddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vendors__VendorA__25869641">
+    <End Role="Address" Type="Self.Address" Multiplicity="1" />
+    <End Role="Vendors" Type="Self.Vendor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="Vendors">
+        <PropertyRef Name="VendorAddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BillOfMat__Compo__2E1BDC42">
+    <End Role="Parts" Type="Self.Part" Multiplicity="1" />
+    <End Role="BillOfMaterials" Type="Self.BillOfMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parts">
+        <PropertyRef Name="PartID" />
+      </Principal>
+      <Dependent Role="BillOfMaterials">
+        <PropertyRef Name="ComponentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BillOfMat__Produ__2D27B809">
+    <End Role="Parts" Type="Self.Part" Multiplicity="0..1" />
+    <End Role="BillOfMaterials" Type="Self.BillOfMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parts">
+        <PropertyRef Name="PartID" />
+      </Principal>
+      <Dependent Role="BillOfMaterials">
+        <PropertyRef Name="ProductAssemblyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Customer__Credit__34C8D9D1">
+    <End Role="Credit" Type="Self.Credit" Multiplicity="1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Credit">
+        <PropertyRef Name="CreditID" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="CreditID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CustomerO__Custo__37A5467C">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="CustomerOrders" Type="Self.CustomerOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="CustomerOrders">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CustomerO__Produ__38996AB5">
+    <End Role="Parts" Type="Self.Part" Multiplicity="1" />
+    <End Role="CustomerOrders" Type="Self.CustomerOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parts">
+        <PropertyRef Name="PartID" />
+      </Principal>
+      <Dependent Role="CustomerOrders">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Inventory__Produ__4222D4EF">
+    <End Role="Parts" Type="Self.Part" Multiplicity="1" />
+    <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parts">
+        <PropertyRef Name="PartID" />
+      </Principal>
+      <Dependent Role="Inventory">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__JobOrders__Produ__3F466844">
+    <End Role="Parts" Type="Self.Part" Multiplicity="1" />
+    <End Role="JobOrders" Type="Self.JobOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parts">
+        <PropertyRef Name="PartID" />
+      </Principal>
+      <Dependent Role="JobOrders">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Parts__VendorID__286302EC">
+    <End Role="Vendors" Type="Self.Vendor" Multiplicity="0..1" />
+    <End Role="Parts" Type="Self.Part" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendors">
+        <PropertyRef Name="VendorID" />
+      </Principal>
+      <Dependent Role="Parts">
+        <PropertyRef Name="VendorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__VendorOrd__Produ__3C69FB99">
+    <End Role="Parts" Type="Self.Part" Multiplicity="1" />
+    <End Role="VendorOrders" Type="Self.VendorOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parts">
+        <PropertyRef Name="PartID" />
+      </Principal>
+      <Dependent Role="VendorOrders">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__VendorOrd__Vendo__3B75D760">
+    <End Role="Vendors" Type="Self.Vendor" Multiplicity="1" />
+    <End Role="VendorOrders" Type="Self.VendorOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendors">
+        <PropertyRef Name="VendorID" />
+      </Principal>
+      <Dependent Role="VendorOrders">
+        <PropertyRef Name="VendorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MRPEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Addresses" EntityType="Self.Address" />
+    <EntitySet Name="BillOfMaterials" EntityType="Self.BillOfMaterial" />
+    <EntitySet Name="Credits" EntityType="Self.Credit" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="CustomerOrders" EntityType="Self.CustomerOrder" />
+    <EntitySet Name="Inventories" EntityType="Self.Inventory" />
+    <EntitySet Name="JobOrders" EntityType="Self.JobOrder" />
+    <EntitySet Name="Parts" EntityType="Self.Part" />
+    <EntitySet Name="Resources" EntityType="Self.Resource" />
+    <EntitySet Name="VendorOrders" EntityType="Self.VendorOrder" />
+    <EntitySet Name="Vendors" EntityType="Self.Vendor" />
+    <AssociationSet Name="FK__Customer__Billin__32E0915F" Association="Self.FK__Customer__Billin__32E0915F">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Customer__Shippi__33D4B598" Association="Self.FK__Customer__Shippi__33D4B598">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vendors__VendorA__25869641" Association="Self.FK__Vendors__VendorA__25869641">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="Vendors" EntitySet="Vendors" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BillOfMat__Compo__2E1BDC42" Association="Self.FK__BillOfMat__Compo__2E1BDC42">
+      <End Role="Parts" EntitySet="Parts" />
+      <End Role="BillOfMaterials" EntitySet="BillOfMaterials" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BillOfMat__Produ__2D27B809" Association="Self.FK__BillOfMat__Produ__2D27B809">
+      <End Role="Parts" EntitySet="Parts" />
+      <End Role="BillOfMaterials" EntitySet="BillOfMaterials" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Customer__Credit__34C8D9D1" Association="Self.FK__Customer__Credit__34C8D9D1">
+      <End Role="Credit" EntitySet="Credits" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CustomerO__Custo__37A5467C" Association="Self.FK__CustomerO__Custo__37A5467C">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="CustomerOrders" EntitySet="CustomerOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CustomerO__Produ__38996AB5" Association="Self.FK__CustomerO__Produ__38996AB5">
+      <End Role="Parts" EntitySet="Parts" />
+      <End Role="CustomerOrders" EntitySet="CustomerOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Inventory__Produ__4222D4EF" Association="Self.FK__Inventory__Produ__4222D4EF">
+      <End Role="Parts" EntitySet="Parts" />
+      <End Role="Inventory" EntitySet="Inventories" />
+    </AssociationSet>
+    <AssociationSet Name="FK__JobOrders__Produ__3F466844" Association="Self.FK__JobOrders__Produ__3F466844">
+      <End Role="Parts" EntitySet="Parts" />
+      <End Role="JobOrders" EntitySet="JobOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Parts__VendorID__286302EC" Association="Self.FK__Parts__VendorID__286302EC">
+      <End Role="Vendors" EntitySet="Vendors" />
+      <End Role="Parts" EntitySet="Parts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__VendorOrd__Produ__3C69FB99" Association="Self.FK__VendorOrd__Produ__3C69FB99">
+      <End Role="Parts" EntitySet="Parts" />
+      <End Role="VendorOrders" EntitySet="VendorOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__VendorOrd__Vendo__3B75D760" Association="Self.FK__VendorOrd__Vendo__3B75D760">
+      <End Role="Vendors" EntitySet="Vendors" />
+      <End Role="VendorOrders" EntitySet="VendorOrders" />
+    </AssociationSet>
+    <FunctionImport Name="spChangePartVendor">
+      <Parameter Name="partID" Mode="In" Type="Int32" />
+      <Parameter Name="vendorID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spInsertAddress">
+      <Parameter Name="streetAddress" Mode="In" Type="String" />
+      <Parameter Name="city" Mode="In" Type="String" />
+      <Parameter Name="state" Mode="In" Type="String" />
+      <Parameter Name="country" Mode="In" Type="String" />
+      <Parameter Name="postalCode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spInsertVendor">
+      <Parameter Name="vendorName" Mode="In" Type="String" />
+      <Parameter Name="vendorContact" Mode="In" Type="String" />
+      <Parameter Name="vendorPhoneNumber" Mode="In" Type="String" />
+      <Parameter Name="vendorAddressID" Mode="In" Type="Int32" />
+      <Parameter Name="vendorRating" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

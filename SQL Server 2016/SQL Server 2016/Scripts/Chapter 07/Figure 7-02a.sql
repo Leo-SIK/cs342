@@ -1,0 +1,4 @@
+USE AP;
+
+INSERT INTO InvoiceCopy
+VALUES (97, '456789', '2016-04-01', 8344.50, 0, 0, 1, '2016-04-30', NULL); 

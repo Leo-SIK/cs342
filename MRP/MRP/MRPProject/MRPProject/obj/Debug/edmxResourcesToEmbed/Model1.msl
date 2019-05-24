@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MRPModelStoreContainer" CdmEntityContainer="MRPEntities">
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="MRPModel.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BillOfMaterials">
+      <EntityTypeMapping TypeName="MRPModel.BillOfMaterial">
+        <MappingFragment StoreEntitySet="BillOfMaterials">
+          <ScalarProperty Name="BillOfMaterialsID" ColumnName="BillOfMaterialsID" />
+          <ScalarProperty Name="ProductAssemblyID" ColumnName="ProductAssemblyID" />
+          <ScalarProperty Name="ComponentID" ColumnName="ComponentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Credits">
+      <EntityTypeMapping TypeName="MRPModel.Credit">
+        <MappingFragment StoreEntitySet="Credit">
+          <ScalarProperty Name="CreditID" ColumnName="CreditID" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="CurrentBalance" ColumnName="CurrentBalance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="MRPModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="BillingAddressID" ColumnName="BillingAddressID" />
+          <ScalarProperty Name="ShippingAddressID" ColumnName="ShippingAddressID" />
+          <ScalarProperty Name="CreditID" ColumnName="CreditID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerOrders">
+      <EntityTypeMapping TypeName="MRPModel.CustomerOrder">
+        <MappingFragment StoreEntitySet="CustomerOrders">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="DateAvailable" ColumnName="DateAvailable" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="SplitShipments" ColumnName="SplitShipments" />
+          <ScalarProperty Name="Shipped" ColumnName="Shipped" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Inventories">
+      <EntityTypeMapping TypeName="MRPModel.Inventory">
+        <MappingFragment StoreEntitySet="Inventory">
+          <ScalarProperty Name="InventoryID" ColumnName="InventoryID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="InventoryLane" ColumnName="InventoryLane" />
+          <ScalarProperty Name="InventoryRow" ColumnName="InventoryRow" />
+          <ScalarProperty Name="InventoryBin" ColumnName="InventoryBin" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobOrders">
+      <EntityTypeMapping TypeName="MRPModel.JobOrder">
+        <MappingFragment StoreEntitySet="JobOrders">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="Completed" ColumnName="Completed" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parts">
+      <EntityTypeMapping TypeName="MRPModel.Part">
+        <MappingFragment StoreEntitySet="Parts">
+          <ScalarProperty Name="PartID" ColumnName="PartID" />
+          <ScalarProperty Name="PartName" ColumnName="PartName" />
+          <ScalarProperty Name="PartDescription" ColumnName="PartDescription" />
+          <ScalarProperty Name="PartType" ColumnName="PartType" />
+          <ScalarProperty Name="PartCost" ColumnName="PartCost" />
+          <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+          <ScalarProperty Name="EconomicOrderQty" ColumnName="EconomicOrderQty" />
+          <ScalarProperty Name="SafetyStock" ColumnName="SafetyStock" />
+          <ScalarProperty Name="OnHandMax" ColumnName="OnHandMax" />
+          <ScalarProperty Name="OrderLeadTime" ColumnName="OrderLeadTime" />
+          <ScalarProperty Name="PartIllustration" ColumnName="PartIllustration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Resources">
+      <EntityTypeMapping TypeName="MRPModel.Resource">
+        <MappingFragment StoreEntitySet="Resources">
+          <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+          <ScalarProperty Name="ResourceName" ColumnName="ResourceName" />
+          <ScalarProperty Name="ResourceStatus" ColumnName="ResourceStatus" />
+          <ScalarProperty Name="MaintainanceDescription" ColumnName="MaintainanceDescription" />
+          <ScalarProperty Name="ReplacementDate" ColumnName="ReplacementDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VendorOrders">
+      <EntityTypeMapping TypeName="MRPModel.VendorOrder">
+        <MappingFragment StoreEntitySet="VendorOrders">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="QuantityOrdered" ColumnName="QuantityOrdered" />
+          <ScalarProperty Name="QuantityReceived" ColumnName="QuantityReceived" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendors">
+      <EntityTypeMapping TypeName="MRPModel.Vendor">
+        <MappingFragment StoreEntitySet="Vendors">
+          <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+          <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="VendorAddressID" ColumnName="VendorAddressID" />
+          <ScalarProperty Name="VendorRating" ColumnName="VendorRating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spChangePartVendor" FunctionName="MRPModel.Store.spChangePartVendor" />
+    <FunctionImportMapping FunctionImportName="spInsertAddress" FunctionName="MRPModel.Store.spInsertAddress" />
+    <FunctionImportMapping FunctionImportName="spInsertVendor" FunctionName="MRPModel.Store.spInsertVendor" />
+  </EntityContainerMapping>
+</Mapping>
