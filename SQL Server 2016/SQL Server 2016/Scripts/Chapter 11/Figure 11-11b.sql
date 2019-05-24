@@ -1,4 +1,0 @@
-USE New_AP;
-
-ALTER TABLE Vendors
-DROP COLUMN LastTranDate;

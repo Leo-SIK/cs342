@@ -1,5 +1,0 @@
-USE New_AP;
-
-CREATE TABLE Vendors9
-(VendorID        INT NOT NULL PRIMARY KEY,
-VendorName       VARCHAR(50) NOT NULL);

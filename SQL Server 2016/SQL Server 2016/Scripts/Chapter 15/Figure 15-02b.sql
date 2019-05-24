@@ -1,3 +1,0 @@
-USE AP;
-
-EXEC spInvoiceReport;

@@ -1,4 +1,0 @@
-USE New_AP;
-
-INSERT Invoices3
-VALUES (-100);

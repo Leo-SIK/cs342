@@ -1,3 +1,0 @@
-USE AP;
-
-DROP SCHEMA Marketing;

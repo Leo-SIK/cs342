@@ -1,3 +1,0 @@
-USE AP;
-
-ALTER USER JohnDoe WITH DEFAULT_SCHEMA = Marketing;

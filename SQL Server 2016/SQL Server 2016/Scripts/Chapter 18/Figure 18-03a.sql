@@ -1,5 +1,0 @@
-USE AP;
-
-CREATE TABLE DDLActivityLog
-(EventID int NOT NULL IDENTITY PRIMARY KEY,
-EventData xml NOT NULL);

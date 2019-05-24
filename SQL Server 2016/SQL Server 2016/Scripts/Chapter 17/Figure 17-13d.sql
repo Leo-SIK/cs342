@@ -1,1 +1,0 @@
-ALTER SERVER ROLE dbcreator ADD MEMBER Consultant;

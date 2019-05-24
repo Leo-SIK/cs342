@@ -1,5 +1,0 @@
-USE New_AP;
-
-CREATE SEQUENCE TestSequence2
-    START WITH 10
-    INCREMENT BY 10;

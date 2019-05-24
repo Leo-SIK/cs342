@@ -1,3 +1,0 @@
-USE New_AP;
-
-DROP SEQUENCE TestSequence2;

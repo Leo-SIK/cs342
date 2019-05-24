@@ -1,1 +1,0 @@
-ALTER SERVER ROLE Consultant ADD MEMBER JohnDoe;

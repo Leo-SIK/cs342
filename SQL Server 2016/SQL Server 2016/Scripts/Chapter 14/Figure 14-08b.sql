@@ -1,5 +1,0 @@
-USE master;
-IF DB_ID('TestDB') IS NOT NULL
-    DROP DATABASE TestDB;
-
-CREATE DATABASE TestDB

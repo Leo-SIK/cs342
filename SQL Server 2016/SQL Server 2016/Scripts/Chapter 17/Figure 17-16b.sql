@@ -1,6 +1,0 @@
-USE AP;
-
-ALTER ROLE InvoiceEntry WITH NAME = InvEntry;
-
-ALTER ROLE InvEntry DROP MEMBER JohnDoe;
-DROP ROLE InvEntry;

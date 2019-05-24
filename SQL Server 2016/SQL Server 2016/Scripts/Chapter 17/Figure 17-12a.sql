@@ -1,3 +1,0 @@
-USE AP;
-
-ALTER SERVER ROLE sysadmin ADD MEMBER JohnDoe;

@@ -1,3 +1,0 @@
-USE AP;
-
-SELECT * FROM IBM_Invoices;

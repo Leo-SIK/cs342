@@ -1,2 +1,0 @@
-USE AP;
-EXEC GetInvoiceReport;

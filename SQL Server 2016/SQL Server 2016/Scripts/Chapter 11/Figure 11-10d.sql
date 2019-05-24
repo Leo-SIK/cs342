@@ -1,3 +1,0 @@
-USE master;
-
-DROP DATABASE New_AP;

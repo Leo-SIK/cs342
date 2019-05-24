@@ -1,4 +1,0 @@
-USE AP;
-GO
-
-CREATE SCHEMA Accounting;
